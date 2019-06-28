@@ -1,0 +1,45 @@
+<form [formGroup]="myform" (submit)='AddStudent(myform.value)'>
+    <h3 class="text-center">CREATE STUDENT</h3>
+    <div class="form-group">
+        <input type="text" formControlName="StudentName" class="form-control" placeholder="StudentName">
+        <div *ngIf="myform.get('StudentName').touched" class="text-danger">
+            <p *ngIf="myform.get('StudentName').hasError('required')" class="text-danger">
+                StudentName is required
+            </p>
+            <p *ngIf="myform.get('StudentName').hasError('minlength') && !myform.get('StudentName').hasError('required')" class="text-danger">
+                StudentName less 3 char
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" formControlName="FName" class="form-control" placeholder="FName">
+        <div *ngIf="myform.get('FName').touched">
+            <p *ngIf="myform.get('FName').hasError('required')" class="text-danger">
+                FName is required
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" formControlName="MName" class="form-control" placeholder="MName">
+        <div *ngIf="myform.get('MName').touched">
+            <p *ngIf="myform.get('MName').hasError('required')" class="text-danger">
+                MName is required
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" formControlName="ContactNo" class="form-control" placeholder="ContactNo">
+        <div *ngIf="myform.get('ContactNo').touched">
+            <p *ngIf="myform.get('ContactNo').hasError('required')" class="text-danger">
+                ContactNo is required
+            </p>
+            <p *ngIf="myform.get('ContactNo').hasError('pattern') && !myform.get('ContactNo').hasError('required')" class="text-danger">
+                ContactNo is char not number
+            </p>
+        </div>
+    </div>
+    <div class="form-group row m-auto">
+        <button type="submit" [disabled]="myform.invalid" class="btn btn-success m-auto col-md-6 col-office-6">Create</button>
+    </div>
+    <!-- <div *ngIf="Id != null" type="button" (click)="UpdateConfirm(studentForm.value, Id)" class="btn btn-primary">Save</div> -->
+</form>

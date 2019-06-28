@@ -1,0 +1,28 @@
+<form [formGroup]="myform" *ngIf="student !== undefined" (submit)='Update(student.Id, myform.value)'>
+    <h3 class="text-center">UPDATE STUDENT</h3>
+    <div class="form-group">
+        <input type="text" formControlName="StudentName" value="{{student.StudentName}}" class="form-control" placeholder="StudentName">
+        <div *ngIf="myform.get('StudentName').touched">
+            <p *ngIf="myform.get('StudentName').hasError('required')" class="text-danger">
+                StudentName is required
+            </p>
+            <p *ngIf="myform.get('StudentName').hasError('minlength')" class="text-danger">
+                StudentName less than 3 char
+            </p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [value]="student.FName" placeholder="FName">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [value]="student.MName" placeholder="MName">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [value]="student.ContactNo" placeholder="ContactNo">
+    </div>
+    <div class="form-group row m-auto">
+        <button [disabled]="!myform.valid" type="submit" class="btn btn-primary m-auto col-md-6 col-office-6">Save</button>
+    </div>
+    <h3>{{myform.get('StudentName').hasError('required')}}</h3>
+    <!-- <div *ngIf="Id != null" type="button" (click)="UpdateConfirm(studentForm.value, Id)" class="btn btn-primary">Save</div> -->
+</form>

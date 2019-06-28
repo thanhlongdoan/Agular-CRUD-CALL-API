@@ -1,0 +1,28 @@
+<form #studentForm="ngForm" *ngIf="student !== undefined" (submit)='Update(student.Id, studentForm.value)'>
+    <h3 class="text-center">UPDATE STUDENT TEST</h3>
+    <div class="form-group">
+        <input type="text" class="form-control" minlength="3" #txtStudentName="ngModel" [(ngModel)]="student.StudentName" name="StudentName" placeholder="StudentName" required>
+        <div *ngIf="txtStudentName?.touched">
+            <div *ngIf="txtStudentName.errors?.required" class="text-danger">
+                StudentName is required
+            </div>
+            <div *ngIf="txtStudentName.errors?.minlength" class="text-danger">
+                StudentName less than 3 char
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="student.FName" name="FName" placeholder="FName" required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="student.MName" name="MName" placeholder="MName" required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="student.ContactNo" name="ContactNo" placeholder="ContactNo" required>
+    </div>
+    <div class="form-group row m-auto">
+        <button [disabled]="!studentForm.valid" type="submit" class="btn btn-primary m-auto col-md-6 col-office-6">Save</button>
+    </div>
+    <p>{{ studentForm.value | json }}</p>
+    <!-- <div *ngIf="Id != null" type="button" (click)="UpdateConfirm(studentForm.value, Id)" class="btn btn-primary">Save</div> -->
+</form>

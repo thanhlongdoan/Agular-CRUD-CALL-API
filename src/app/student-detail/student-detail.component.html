@@ -1,0 +1,8 @@
+<p *ngIf="student !== undefined">StudentName: {{ student.StudentName}}</p>
+<p *ngIf="student !== undefined">FName: {{ student.FName}}</p>
+<p *ngIf="student !== undefined">MName: {{ student.MName}}</p>
+<p *ngIf="student !== undefined">ContactNo: {{ student.ContactNo}}</p>
+<button (click)="load()">load</button>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
